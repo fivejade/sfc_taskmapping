@@ -89,21 +89,23 @@ Two examples (P3DFFT solver and Poisson solver) are given to compare the perform
 
 #### P3DFFT solver
 P3DFFT solver is a popular software package to implement fast Fourier trans-forms  (FFTs)  in  three  dimensions  in  a  highly  efficient  and  scalable  way.   It exploits  a  2D  domain  decomposition  strategy.   It  needs  to  build  two  versions(baseline and Hilbert executable) of P3DFFT solver and execute them one afteranother. Patch  files  are  given  to  build  Hilbert  version.   
-The details of installation and exeuction are described at README.pdf file in root directory.
+The details of installation and execution are described at README.pdf file in root directory.
 
 #### Poisson solver
 The Poisson solver is a parallel solver of the Poisson equation with Multigrid method. Unlike previous workload, this code adapts a 3D domain decomposition strategy.
 Two versions (baseline and Hilbert executable) of Poisson solver are needed and executed them one after another. 
-The details of installation and exeuction are described at README.pdf file in in root directory.
+The details of installation and execution are described at README.pdf file in in root directory.
 
 ### Tools for performance analysis
 
 #### *record\_compute\_nodes* Tool
-The details of installation and exeuction are described at README.pdf file in root directory.
+The details of installation and execution are described at README.pdf file in root directory.
 
 #### *generate\_job\_log* Tool
 Two examples (P3DFFT solver and Poisson solver) are given to run the *generate\_job\_log* tool. 
-Each example has its source code to build a tool. An executable file(*generate\_job\_log*) is to be built from source files using a *make* command
+Each example has its source code to build a tool. An executable file(*generate\_job\_log*) is to be built from source files using a *make* command.
+The details of installation and execution are described at README.pdf file in root directory.
+
 
 
     
