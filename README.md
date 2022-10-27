@@ -99,6 +99,8 @@ Two versions (baseline and Hilbert executable) of Poisson solver are needed and 
 
 Two examples (P3DFFT solver and Poisson solver) are given to run the *generate\_job\_log* tool. 
 Each example has its source code to build a tool. An executable file(*generate\_job\_log*) is to be built from source files using a *make* command.
+The details are described at README.pdf file in root directory.
+
 
 
 
