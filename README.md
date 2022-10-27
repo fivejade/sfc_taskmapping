@@ -96,6 +96,14 @@ The Poisson solver is a parallel solver of the Poisson equation with Multigrid m
 Two versions (baseline and Hilbert executable) of Poisson solver are needed and executed them one after another. 
 The details of installation and exeuction are described at README.pdf file in in root directory.
 
+### Tools for performance analysis
+
+#### *record\_compute\_nodes* Tool
+The details of installation and exeuction are described at README.pdf file in root directory.
+
+#### *generate\_job\_log* Tool
+Two examples (P3DFFT solver and Poisson solver) are given to run the *generate\_job\_log* tool. 
+Each example has its source code to build a tool. An executable file(*generate\_job\_log*) is to be built from source files using a *make* command
 
 
     
