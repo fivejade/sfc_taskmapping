@@ -89,7 +89,7 @@ Two examples (P3DFFT solver and Poisson solver) are given to compare the perform
 The details of installation and execution are described at README.pdf file in root directory.
 
 #### P3DFFT solver
-P3DFFT solver is a popular software package to implement fast Fourier trans-forms  (FFTs)  in  three  dimensions  in  a  highly  efficient  and  scalable  way.   It exploits  a  2D  domain  decomposition  strategy.   It  needs  to  build  two  versions(baseline and Hilbert executable) of P3DFFT solver and execute them one afteranother. Patch  files  are  given  to  build  Hilbert  version.   
+P3DFFT solver is a popular software package to implement fast Fourier transforms  (FFTs)  in  three  dimensions  in  a  highly  efficient  and  scalable  way.   It exploits  a  2D  domain  decomposition  strategy.   It  needs  to  build  two  versions(baseline and Hilbert executable) of P3DFFT solver and execute them one afteranother. Patch  files  are  given  to  build  Hilbert  version.   
 
 #### Poisson solver
 Poisson solver is a parallel solver of the Poisson equation with Multigrid method. Unlike previous workload, this code adapts a 3D domain decomposition strategy.
