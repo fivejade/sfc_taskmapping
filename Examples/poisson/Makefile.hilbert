@@ -1,0 +1,33 @@
+FC    	= mpiifort
+#FFLAGS  = -O0 -warn all -g -check all -fPIC -fp-model precise -fopenmp -fpp -mkl=parallel #-DDEBUG_COARSEST -DDEBUG_GRID -DDEBUG_MATRIX -DDEBUG_RESTRICTION -DDEBUG_PROLONGATION -DMPI_INPLACE #-DUSE_MKL
+FFLAGS_HILBERT  = -O2 -fPIC -fp-model precise -fopenmp -fpp -mkl=parallel -DHILBERT #-DDEBUG_RESTRICTION -DDEBUG_GRID #-DINPLACE #-DDEBUG1 #-DDEBUG_PROLONGATION #-DUSE_MKL
+FFLAGS  = -O2 -fPIC -fp-model precise -fopenmp -fpp -mkl=parallel #-DDEBUG_RESTRICTION -DDEBUG_GRID #-DINPLACE #-DDEBUG1 #-DDEBUG_PROLONGATION #-DUSE_MKL
+
+OBJS 	= timer.o para_range.o mpi_topology.o geometry.o matrix.o poisson_matrix_operator.o \
+	  cg_poisson_matrix.o rbgs_poisson_matrix.o multigrid_common.o multigrid.o poisson.o 
+HILBERT_OBJS 	= hilbert.o timer.o para_range.o mpi_topology.o geometry.o matrix.o poisson_matrix_operator.o \
+	  cg_poisson_matrix.o rbgs_poisson_matrix.o multigrid_common.o multigrid.o poisson.o 
+LIBS	= -liomp5 -lpthread -lm
+
+EXE_HILBERT	= prun_hilbert.ex
+EXE	= prun.ex
+all	: result hilbert
+
+result	:
+	mkdir -p result
+
+mytest	: $(OBJS)
+	$(FC) -o $(EXE) $(FFLAGS) $(OBJS) $(LIBS)
+
+hilbert	: $(HILBERT_OBJS)
+	$(FC) -c $(FFLAGS_HILBERT) mpi_topology.f90
+	$(FC) -o $(EXE_HILBERT) $(HILBERT_OBJS) $(LIBS)
+
+clean	:
+	rm -rf $(EXE) *.o *.mod result *.bin *.dat *__genmod.f90
+
+%.o: %.f90
+	$(FC) -c $(FFLAGS) $?
+%.o: %.mod
+
+

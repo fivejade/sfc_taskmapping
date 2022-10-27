@@ -1,0 +1,8 @@
+module purge
+module load craype-network-opa 
+module load intel/19.0.5 craype-mic-knl
+module load impi/19.0.5
+module load craype-mic-knl
+
+module list
+

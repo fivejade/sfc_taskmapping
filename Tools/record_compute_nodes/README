@@ -1,0 +1,32 @@
+
+record_compute_nodes tool
+
+The record_compute_nodes tool records a list of compute resources allocated to the given MPI tasks according to the domain decomposition strategy. Specifically, it generates a stdout file containing a list of MPI_ID-hostname pairs, i.e., MPI task IDs and their host mappings. This list is further leveraged to compute the fragmentation of the currently mapped tasks. 
+
+An executable file is to be built from source files using a make command as follows.
+$ make 
+
+Run
+- Write a job script: run.sh is an example job script for PBS batch scheduler. Because record_compute_nodes tool is implemented on MPI library, it must be run with an mpirun program. The first argument on record_compute_nodes tool is the domain decomposition strategy, i.e. 2 for 2D domain decomposition and 3 for 3D domain decomposition. 
+
+$ cat run.sh
+#!/bin/bash
+#PBS -N test
+#PBS -V
+#PBS -q normal
+#PBS -A inhouse
+#PBS -l select=8:ncpus=64:mpiprocs=64:ompthreads=1
+#PBS -l walltime=0:10:00
+
+cd $PBS_O_WORKDIR
+TOTAL_CPUS=$(wc -l $PBS_NODEFILE | awk '{print $1}')
+
+OUTFILE=out.host.${TOTAL_CPUS}.${PBS_JOBID}
+ERRFILE=err.host.${TOTAL_CPUS}.${PBS_JOBID}
+# "record_compute_nodes 2" for 2D domain decomposition
+# "record_compute_nodes 3" for 3D domain decomposition 
+mpirun ./record_compute_nodes 2 >> ${OUTFILE} 2>> ${ERRFILE}
+
+- submit the job script via a PBS job scheduler. Note that the total number of CPU cores must be 2^{n}x2^{n}x2^{n}, n = 1, 2, ... for 2D domain decomposition and 2^{n}x2^{n}x2^{n} for 3D domain decomposition.
+
+$ qsub ./run.sh

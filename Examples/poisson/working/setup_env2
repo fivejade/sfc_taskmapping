@@ -1,0 +1,36 @@
+module purge
+module load craype-network-opa 
+module load intel/19.0.5 craype-mic-knl
+module load impi/19.0.5
+module load craype-mic-knl
+module load netcdf/4.6.1
+module load parallel-netcdf/1.10.0
+module load netcdf-hdf5-parallel/4.6.1
+
+
+#module load mvapich2/2.3.1
+#module load intel/18.0.3
+#module load vtune
+#module load pio/2.3.1
+
+module list
+
+#export NETCDF_DIR=/apps/compiler/intel/18.0.3/applib1/mic-knl/netcdf/4.6.1/
+#export PNETCDF_DIR=/apps/compiler/intel/18.0.3/impi/2018.3.222/applib2/mic-knl/parallel-netcdf/1.10.0/
+#export NETCDF_DIR=/apps/compiler/gcc/7.2.0/applib1/mic-knl/netcdf/4.6.1/lib
+#export PNETCDF_DIR=/apps/compiler/gcc/7.2.0/mvapich2/2.3/applib2/mic-knl/parallel-netcdf/1.10.0/
+
+#export NETCDFPATH=/scratch/pop00/external/netcdf-4.6.1 
+#export PNETCDFPATH=/scratch/pop00/external/pnetcdf-1.11.0/
+
+#export NETCDFPATH=/apps/compiler/intel/19.0.5/applib1/mic-knl/netcdf/4.6.1
+#export PNETCDFPATH=/apps/compiler/intel/19.0.5/impi/2019.5.281/applib2/mic-knl/parallel-netcdf/1.10.0/
+#export PNETCDFPATH=/apps/compiler/intel/18.0.3/mvapich2/2.3.1/applib2/mic-knl/parallel-netcdf/1.10.0
+
+export WRFIO_NCD_LARGE_FILE_SUPPORT=1
+export NETCDF_ROOT=$NETCDFPATH
+export NETCDFPATH=$NETCDF_DIR
+export PARALLEL_NETCDF_DIR=$PNETCDFPATH
+
+#export NETCDF4=1
+
